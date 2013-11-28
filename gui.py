@@ -1,21 +1,24 @@
 import Tkinter as Tkinter
-
-
-class App(Tkinter.Frame):
-
-    def __init__ (self,environment,height,width):
-        
-        self = Tkinter.tk()
+from Tkinter import *
+class App(Frame):
+    height = 0
+    environment = []
+    width = 0
+    def __init__ (self,environment,height,width,master=None):
         #Tkinter.Frame.__init__(self,master=None)
-        #self.create_lines(environment,height,width)
+        self.environment = environment
+        self.height = height
+        self.width = width
+        print "initialized"
+        self.create_lines(master)
     
-    def create_lines(self,environment,height,width):
+    def create_lines(self,master):
         
-        C = Tkinter.Canvas(self, height=height,width=width,cursor="dot")
-        for i in range(0,len(environment.surface)):
-            coord =0,(i)*height/len(environment.surface),width,(i)*height/len(environment.surface)
+        C = Tkinter.Canvas(master, height=self.height,width=self.width,cursor="dot")
+        for i in range(0,len(self.environment.surface)):
+            coord =0,(i)*self.height/len(self.environment.surface),self.width,(i)*self.height/len(self.environment.surface)
             C.create_line(coord)
-            coord =(i)*width/len(environment.surface),0,(i)*width/len(environment.surface),height
+            coord =(i)*self.width/len(self.environment.surface),0,(i)*self.width/len(self.environment.surface),self.height
             C.create_line(coord)
-        self.pack()
+        master.pack()
 
