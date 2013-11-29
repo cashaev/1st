@@ -1,10 +1,16 @@
 from gui import *
 from environment import Environment
-from Tkinter import *
+import Tkinter
+import random
 
 
-e = Environment(10,10)
-root = Tk("App")
-myapp = App(e,500,500,master=root)
-#myapp.create_lines(e,500,500)
+top = Tkinter.Tk()
+myapp = App(top)
+print "instantiated App"
 myapp.mainloop()
+
+
+
+
+
+print "started mainloop"
